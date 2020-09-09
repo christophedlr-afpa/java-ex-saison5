@@ -1,0 +1,39 @@
+ALGORITHME ex-5.11
+
+VARIABLES
+horseStarting: numérique = 0
+horsePlayed: numérique = 0
+x: numérique = 1
+y: numérique = 1
+n: numérique = 1
+p: numérique = 1
+result: numérique = 1
+
+DEBUT
+    ECRIRE "Nombre de chevaux partant : "
+    LIRE horseStarting
+
+    ECIRE "Nombre de chevaux joués : "
+    LIRE horsePlayed
+
+    POUR i = 1 à horseStarting+1
+        n = n*i
+    FIN POUR
+
+    POUR i = 1 à (horseStarting-horsePlayed)+1
+        result = result*i
+    FIN POUR
+
+    x = n/result
+
+    POUR i = 1 à horsePlayed+1
+        p = p*i
+    FIN POUR
+
+    y = n/(p*result)
+
+    ECRIRE "Dans l’ordre : une chance sur "+x+" de gagner"
+    ECRIRE "Dans le désordre : une chance sur "+y+" de gagner"
+FIN
+
+FIN ex-5.11
