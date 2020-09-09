@@ -1,0 +1,28 @@
+ALGORITHME ex-5.2b
+
+VARIABLES
+
+randomNumber: numérique
+number = -1: numérique
+numbertesting = 0: numérique
+
+DEBUT
+    randomNumber = random[1..100]
+
+    TANTQUE nummber <> randomNumber
+        numbertesting = numbertesting+1
+        ECRIRE "Choisissez un nombre entre 1 et 100"
+        LIRE number
+
+        SI number > randomNumber
+            ECRIRE "Plus petit !"
+        ELSE IF number < randomNumber
+            ECIRE "Plus grand !"
+        FIN SI
+    FIN TANTQUE
+
+    ECRIRE "Vous avez trouvé, bravo !"
+    ECRIRE "Il vous aura fallut "+numbertesting+" essais pour y arriver."
+FIN
+
+FIN ex-5.b
