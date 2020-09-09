@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -12,11 +14,15 @@ public class Main {
 
         do {
             System.out.println("1. 5.2b");
+            System.out.println("2. 5.10");
             System.out.print("Choisissez votre option : ");
             option = Integer.parseInt(m.reader.readLine());
 
             if (option == 1) {
                 m.algo52b();
+                exit = true;
+            } else if (option == 2) {
+                m.algo510();
                 exit = true;
             } else {
                 System.out.println("Choix invalide");
@@ -45,5 +51,55 @@ public class Main {
 
         System.out.println("Vous avez trouvé, bravo !");
         System.out.println("Il vous aura fallut "+numberTesting+" essais pour y arriver");
+    }
+
+    public void algo510() throws IOException {
+        int   price           = -1;
+        int   amountPay       = 0;
+        int   total           = 0;
+        int   totalTemp       = 0;
+        int   numberTenEuros  = 0;
+        int   numberFiveEuros = 0;
+        int   numberOneEuros  = 0;
+        int   x               = 0;
+        List<Integer> listPrice;
+
+        listPrice = new ArrayList<Integer>();
+
+        while (price != 0) {
+            System.out.print("Donnez un prix : ");
+            price = Integer.parseInt(reader.readLine());
+            listPrice.add(price);
+        }
+
+        while (listPrice.size() != 0) {
+            total += listPrice.get(x);
+            listPrice.remove(x);
+        }
+
+        System.out.println("Vous devez payer "+total+" €");
+        System.out.print("Combien donnez-vous : ");
+        amountPay = Integer.parseInt(reader.readLine());
+        totalTemp = amountPay-total;
+
+        while (totalTemp > 0) {
+            int tempTenEuros = totalTemp/10;
+            numberTenEuros += tempTenEuros;
+            totalTemp -= (numberTenEuros*10);
+
+            int tempFiveEuros = totalTemp/5;
+            numberFiveEuros += tempFiveEuros;
+            totalTemp -= (numberFiveEuros*5);
+
+            int tempOneEuros = totalTemp;
+            numberOneEuros += tempOneEuros;
+            totalTemp -= numberOneEuros;
+        }
+
+        System.out.println("Le marchand vous a rendu " +
+                numberTenEuros+ " billets de 10 €, " +
+                numberFiveEuros+ " billets de 5€, " +
+                numberOneEuros +" pièces de 1 €"
+        );
     }
 }

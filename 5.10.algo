@@ -1,0 +1,48 @@
+ALGORITHME ex-5.10
+
+VARIABLES
+price: numérique = -1
+amountPay: numérique = 0
+listPrice[]: numérique
+total: numérique = 0
+totalTemp: numérique = 0;
+numberTenEuros: numérique = 0
+numberFiveEuros: numérique = 0
+numberOneEuros: numérique = 0
+
+DEBUT
+    TANTQUE price <> 0
+        ECRIRE "Donnez un prix : "
+        LIRE price
+
+        listPrice[] = price
+    FIN TANTQUE
+
+    TANTQUE le nombre d'éléments listPrice <> 0
+        total = total + listPrice[x]
+    FIN TANTQUE
+
+    ECRIRE "Vous devez payer "+total+" euros"
+    ECRIRE "Combien donnez-vous : "
+    LIRE amountPay
+
+    totalTemp = amountPay-total
+
+    TANTQUE totalTemp > 0
+        tempTenEuros = totalTemp//10
+        numberTenEuros = numberTenEuros+tempTenEuros
+        totalTemp = totalTemp-(numberOneEuros*10)
+
+        tempFiveEuros = totalTemp//5
+        numberFiveEuros = numberFiveEuros+tempFiveEuros
+        totalTemp = totalTemp-(numberFiveEuros*5)
+
+        tempOneEuros = totalTemp
+        numberOneEuros = numberOneEuros+tempOneEuros
+        totalTemp = totalTemp-numberOneEuros
+    FIN TANTQUE
+
+    ECRIRE "Le marchand vous a rendu "+numberTenEuros+ " billets de 10 €, "+numberFiveEuros+ " billets de 5€, "+numberOneEuros+" pièces de 1 €"
+FIN
+
+FIN ex-5.10
